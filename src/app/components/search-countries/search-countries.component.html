@@ -1,0 +1,188 @@
+<div class="table-responsive">
+
+    <table class="table table-striped table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Title</th>
+          <th>Population</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countrys">
+          <td>{{ country.title }}</td>
+          <td>{{ country.population }}</td>
+          <td>
+            <div class="d-flex order-actions">
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleVerticallycenteredModal1"
+                class="btn btn-primary radius-30 mt-2 mt-lg-0"
+                (click)="getCountry(country)"
+                ><i class="bx bxs-plus-square"></i>Delete Country
+              </a>
+  
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleVerticallycenteredModal2"
+                class="btn btn-secondary radius-30 mt-2 mt-lg-0"
+                (click)="getCountry(country)"
+                ><i class="bx bxs-plus-square"></i>Update Country
+              </a>
+  
+              <a
+                type="button"
+                class="btn btn-info radius-30 mt-2 mt-lg-0"
+                [routerLink]="['/details', country.countryId]"
+                ><i class="bx bxs-plus-square"></i>Country Details
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+   
+  
+    <!-- Modal Suppression -->
+    <div
+      class="modal fade"
+      id="exampleVerticallycenteredModal1"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete Country</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3" [formGroup]="deleteCountryForm">
+              <div><h3>A3touna 120 dinars le5ra chomage !!!</h3></div>
+  
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-danger px-5"
+                  data-bs-dismiss="modal"
+                  (click)="deleteCountry()"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal Update -->
+    <div
+      class="modal fade"
+      id="exampleVerticallycenteredModal2"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Update Country</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3" [formGroup]="updateCountryForm">
+              <div class="col-md-12">
+                <label for="inputLastName1" class="form-label">Title</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-transparent"
+                    ><i class="bx bxs-user"></i
+                  ></span>
+                  <input
+                    formControlName="title"
+                    type="text"
+                    [required]="true"
+                    class="form-control border-start-0"
+                    id="inputLastName1"
+                    [value]="updateCountryForm.get('title')?.value"
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label for="inputLastName2" class="form-label">Population</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-transparent"
+                    ><i class="bx bxs-user"></i
+                  ></span>
+                  <input
+                    formControlName="population"
+                    type="number"
+                    [required]="true"
+                    class="form-control border-start-0"
+                    id="inputLastName2"
+                    [value]="updateCountryForm.get('population')?.value"
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label for="inputLastName2" class="form-label">Pays</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-transparent"
+                    ><i class="bx bxs-user"></i
+                  ></span>
+                  <select
+                    class="form-select"
+                    id="folder1"
+                    aria-label="Default select example"
+                    formControlName="paysId"
+                    [value]="updateCountryForm.get('paysId')?.value"
+                  >
+                    <option *ngFor="let p of pays" [value]="p.paydId">
+                      {{ p.title }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-danger px-5"
+                  data-bs-dismiss="modal"
+                  (click)="updateCountry()"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
