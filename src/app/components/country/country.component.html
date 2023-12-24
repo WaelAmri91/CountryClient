@@ -7,6 +7,16 @@
     ><i class="bx bxs-plus-square"></i>New Country</a
   >
 </div>
+<div class="d-flex justify-content-end">
+  <div>
+    <a type="button" class="btn btn-primary radius-30 mt-2 mt-lg-0" [routerLink]="['/player']">
+      <i class="bx bxs-plus-square"></i> Go To Player Interface
+    </a>
+  </div>
+</div>
+
+
+
 <div class="search-box" data-list='{"valueNames":["title"]}'>
   <form class="position-relative" data-bs-toggle="search" data-bs-display="static" (ngSubmit)="search(searchInput.value); searchInput.value=''">
     <input class="form-control search-input fuzzy-search" placeholder="Search..." aria-label="Search" type="text" #searchInput/>

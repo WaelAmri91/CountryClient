@@ -8,13 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CountryDetailsComponent } from './components/country-details/country-details.component';
 import { SearchCountriesComponent } from './components/search-countries/search-countries.component';
+import { PlayerComponent } from './components/player/player.component';
+import { AddPlayerComponent } from './components/add-player/add-player.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
+import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountryComponent,
     CountryDetailsComponent,
-    SearchCountriesComponent
+    SearchCountriesComponent,
+    PlayerComponent,
+    AddPlayerComponent,
+    PlayerDetailsComponent,
+    EditPlayerComponent
   ],
   imports: [
     BrowserModule,

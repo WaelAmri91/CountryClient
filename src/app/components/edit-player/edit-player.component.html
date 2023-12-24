@@ -1,0 +1,97 @@
+<div>
+  <form class="row g-3" [formGroup]="editPlayerForm">
+    <div class="col-md-12">
+      <label for="inputLastName1" class="form-label">Title</label>
+      <div class="input-group">
+        <span class="input-group-text bg-transparent">
+          <i class="bx bxs-user"></i>
+        </span>
+        <input
+          formControlName="title"
+          type="text"
+          [required]="true"
+          [maxLength]="30"
+          class="form-control border-start-0"
+          id="inputLastName1"
+        />
+      </div>
+      <!-- Affichage du message d'erreur pour le champ "Title" -->
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          editPlayerForm.get('title')?.hasError('required') &&
+          editPlayerForm.get('title')?.touched
+        "
+      >
+        Title is required.
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          editPlayerForm.get('title')?.hasError('maxlength') &&
+          editPlayerForm.get('title')?.touched
+        "
+      >
+        Title cannot exceed 30 characters.
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label for="inputLastName2" class="form-label">playerNumber</label>
+      <div class="input-group">
+        <span class="input-group-text bg-transparent">
+          <i class="bx bxs-user"></i>
+        </span>
+        <input
+          formControlName="playerNumber"
+          type="number"
+          [required]="true"
+          class="form-control border-start-0"
+          id="inputLastName2"
+        />
+      </div>
+      <!-- Affichage du message d'erreur pour le champ "playerNumber" -->
+      <div
+        *ngIf="
+          editPlayerForm.get('playerNumber')?.hasError('required') &&
+          editPlayerForm.get('playerNumber')?.touched
+        "
+        class="alert alert-danger"
+      >
+        Player number is required.
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label for="inputLastName2" class="form-label">Team</label>
+      <div class="input-group">
+        <span class="input-group-text bg-transparent">
+          <i class="bx bxs-user"></i>
+        </span>
+        <select
+          class="form-select"
+          id="folder1"
+          aria-label="Default select example"
+          formControlName="teamId"
+          [value]="editPlayerForm.get('teamId')?.value"
+        >
+          <option *ngFor="let t of teams" [value]="t.teamId">
+            {{ t.title }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        type="submit"
+        class="btn btn-danger px-5"
+        data-bs-dismiss="modal"
+        (click)="updatePlayer()"
+        [disabled]="editPlayerForm.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

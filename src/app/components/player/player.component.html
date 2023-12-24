@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-end">
+  <div>
+    <a
+      type="button"
+      class="btn btn-primary radius-30 mt-2 mt-lg-0"
+      [routerLink]="['/addPlayer']"
+    >
+      <i class="bx bxs-plus-square"></i> Add Player
+    </a>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>Title</th>
+        <th>PlayerNumber</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.title }}</td>
+        <td>{{ player.playerNumber }}</td>
+        <td>
+          <div class="d-flex order-actions">
+            <a
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleVerticallycenteredModal1"
+              class="btn btn-primary radius-30 mt-2 mt-lg-0"
+              (click)="getPlayer(player)"
+              ><i class="bx bxs-plus-square"></i>Delete Player
+            </a>
+            <a
+              type="button"
+              class="btn btn-info radius-30 mt-2 mt-lg-0"
+              [routerLink]="['/playerDetails', player.playerId]"
+              ><i class="bx bxs-plus-square"></i>Player Details
+            </a>
+            <a
+              type="button"
+              class="btn btn-secondary radius-30 mt-2 mt-lg-0"
+              [routerLink]="['/editPlayer', player.playerId]"
+              ><i class="bx bxs-plus-square"></i>Update Player
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal Suppression -->
+<div
+  class="modal fade"
+  id="exampleVerticallycenteredModal1"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Player</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3" [formGroup]="deletePlayerForm">
+          <div><h3>A3touna 120 dinars le5ra chomage !!!</h3></div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="btn btn-danger px-5"
+              data-bs-dismiss="modal"
+              (click)="deletePlayer()"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

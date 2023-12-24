@@ -1,0 +1,102 @@
+<div class="modal-dialog modal-dialog-centered">
+  <h5 class="modal-title">Add New Player</h5>
+</div>
+<div>
+  <form class="row g-3" [formGroup]="addPlayerForm">
+    <div class="col-md-12">
+      <label for="inputLastName1" class="form-label">Title</label>
+      <div class="input-group">
+        <span class="input-group-text bg-transparent">
+          <i class="bx bxs-user"></i>
+        </span>
+        <input
+          formControlName="title"
+          type="text"
+          [required]="true"
+          [maxLength]="30"
+          class="form-control border-start-0"
+          id="inputLastName1"
+        />
+      </div>
+      <!-- Affichage du message d'erreur pour le champ "Title" -->
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          addPlayerForm.get('title')?.hasError('required') &&
+          addPlayerForm.get('title')?.touched
+        "
+      >
+        Title is required.
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          addPlayerForm.get('title')?.hasError('maxlength') &&
+          addPlayerForm.get('title')?.touched
+        "
+      >
+        Title cannot exceed 30 characters.
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label for="inputLastName2" class="form-label">playerNumber</label>
+      <div class="input-group">
+        <span class="input-group-text bg-transparent">
+          <i class="bx bxs-user"></i>
+        </span>
+        <input
+          formControlName="playerNumber"
+          type="number"
+          [required]="true"
+          class="form-control border-start-0"
+          id="inputLastName2"
+        />
+      </div>
+      <!-- Affichage du message d'erreur pour le champ "playerNumber" -->
+      <div
+        *ngIf="
+          addPlayerForm.get('playerNumber')?.hasError('required') &&
+          addPlayerForm.get('playerNumber')?.touched
+        "
+        class="alert alert-danger"
+      >
+        Player number is required.
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label for="inputLastName2" class="form-label">Team</label>
+      <div class="input-group">
+        <span class="input-group-text bg-transparent">
+          <i class="bx bxs-user"></i>
+        </span>
+        <select
+          class="form-select"
+          id="folder1"
+          aria-label="Default select example"
+          formControlName="teamId"
+        >
+          <option *ngFor="let t of teams" [value]="t.teamId">
+            {{ t.title }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button
+        type="submit"
+        class="btn btn-danger px-5"
+        data-bs-dismiss="modal"
+        (click)="addPlayer()"
+        [disabled]="addPlayerForm.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
