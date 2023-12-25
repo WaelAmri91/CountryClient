@@ -1,0 +1,77 @@
+<div>
+  <a
+    type="button"
+    class="btn btn-primary radius-30 mt-2 mt-lg-0"
+    [routerLink]="['/addEmploye']"
+  >
+    <i class="bx bxs-plus-square"></i> Add Employe
+  </a>
+</div>
+<table class="table caption-top">
+ 
+    <caption>List of Eomployes</caption>
+   
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Eomployes Number</th>
+            <th>Actions</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employe of employes">
+          <td>{{ employe.title }}</td>
+          <td>{{ employe.empNum }}</td>
+          <td>
+            <div class="d-flex order-actions">
+              <a
+              type="button"
+              class="btn btn-info radius-30 mt-2 mt-lg-0"
+              [routerLink]="['/employeDetails', employe.employeId]"
+              ><i class="bx bxs-plus-square"></i>Employes Details
+            </a>
+
+            <a
+              type="button"
+              class="btn btn-secondary radius-30 mt-2 mt-lg-0"
+              [routerLink]="['/editEmploye', employe.employeId]"
+              ><i class="bx bxs-plus-square"></i>Update Employes
+            </a>
+            <a
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleVerticallycenteredModal2"
+            class="btn btn-primary radius-30 mt-2 mt-lg-0"
+            (click)="getEmploye(employe)"
+            ><i class="bx bxs-plus-square"></i>Delete Employe
+          </a>
+              
+            </div>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+
+<!-- Modal Suppression -->
+  <div class="modal" tabindex="-1" id="exampleVerticallycenteredModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3" [formGroup]="deleteEmployeForm">
+            <div><h3>Are You Sure To Delete This Employe</h3></div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit"
+          class="btn btn-danger px-5"
+          data-bs-dismiss="modal"
+          (click)="deleteEmploye()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

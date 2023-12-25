@@ -12,6 +12,10 @@ import { PlayerComponent } from './components/player/player.component';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
+import { EmployeComponent } from './components/employe/employe.component';
+import { EmployeDetailsComponent } from './components/employe-details/employe-details.component';
+import { AddEmployeComponent } from './components/add-employe/add-employe.component';
+import { EditEmployeComponent } from './components/edit-employe/edit-employe.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { EditPlayerComponent } from './components/edit-player/edit-player.compon
     PlayerComponent,
     AddPlayerComponent,
     PlayerDetailsComponent,
-    EditPlayerComponent
+    EditPlayerComponent,
+    EmployeComponent,
+    EmployeDetailsComponent,
+    AddEmployeComponent,
+    EditEmployeComponent
   ],
   imports: [
     BrowserModule,

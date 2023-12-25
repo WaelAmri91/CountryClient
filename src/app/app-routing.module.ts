@@ -7,6 +7,10 @@ import { PlayerComponent } from './components/player/player.component';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
+import { EmployeComponent } from './components/employe/employe.component';
+import { EmployeDetailsComponent } from './components/employe-details/employe-details.component';
+import { AddEmployeComponent } from './components/add-employe/add-employe.component';
+import { EditEmployeComponent } from './components/edit-employe/edit-employe.component';
 
 const routes: Routes = [
   { path: 'country', component: CountryComponent },
@@ -16,6 +20,10 @@ const routes: Routes = [
   { path: 'addPlayer', component: AddPlayerComponent },
   { path: 'playerDetails/:id', component: PlayerDetailsComponent },
   { path: 'editPlayer/:id', component: EditPlayerComponent },
+  { path: 'employe', component: EmployeComponent },
+  { path: 'employeDetails/:id', component: EmployeDetailsComponent },
+  { path: 'addEmploye', component: AddEmployeComponent },
+  { path: 'editEmploye/:id', component: EditEmployeComponent },
 ];
 
 @NgModule({
